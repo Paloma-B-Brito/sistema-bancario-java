@@ -69,14 +69,19 @@ Nota: Certifique-se de estar na raiz do projeto. Ajuste src caso sua pasta de cÃ
 No Linux/macOS (Bash):
 
 Bash
+
 javac -d out $(find src -name "*.java")
+
 java -cp out br.com.banco.main.App
 
 No Windows (PowerShell):
 
 PowerShell
+
 $files = Get-ChildItem -Recurse -Filter *.java src | ForEach-Object { $_.FullName }
+
 javac -d out $files
+
 java -cp out br.com.banco.main.App
 
 ðŸ§ª Exemplo de Uso
