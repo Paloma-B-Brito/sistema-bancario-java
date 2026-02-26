@@ -71,6 +71,7 @@ No Linux/macOS (Bash):
 Bash
 javac -d out $(find src -name "*.java")
 java -cp out br.com.banco.main.App
+
 No Windows (PowerShell):
 
 PowerShell
