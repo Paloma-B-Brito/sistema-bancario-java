@@ -77,6 +77,7 @@ PowerShell
 $files = Get-ChildItem -Recurse -Filter *.java src | ForEach-Object { $_.FullName }
 javac -d out $files
 java -cp out br.com.banco.main.App
+
 🧪 Exemplo de Uso
 Ao executar a aplicação, o sistema exibirá o seguinte menu iterativo no console:
 ------------------------------------------------------------------
