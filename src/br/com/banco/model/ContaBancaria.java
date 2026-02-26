@@ -18,17 +18,19 @@ public class ContaBancaria {
 		return saldo;
 	}
 	
-	public void depositar(double valor) {
+	public boolean depositar(double valor) {
 		if (valor > 0) {
 			this.saldo += valor;
+			return true;
 		}
+		return false;
 	}
 	
 	// O "throws" avisa que este método pode dar errado
 	public void sacar(double valor) throws SaldoInsuficienteException{
 		if (valor <= 0) {
 			// "throw new" é como disparar o alarme
-			throw new SaldoInsuficienteException("O VALOR DO SAQUE DEVE SER POSITIVO!");
+			throw new IllegalArgumentException("O VALOR DO SAQUE DEVE SER POSITIVO!");
 		}
 		
 		if (valor > saldo) {

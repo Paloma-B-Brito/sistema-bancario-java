@@ -31,11 +31,12 @@ public class MenuBanco {
     }
 
     public double pedirValor() {
-        System.out.print("Digite o valor: ");
+        System.out.print("DIGITE O VALOR: ");
         try {
+        	String texto = leitor.next().replace(",", ".");
             return Double.parseDouble(leitor.next());
         } catch (NumberFormatException e) {
-            System.out.println("Valor inválido! Usando 0.0");
+            System.out.println("VALOR INVÁLIDO! USANDO 0.0");
             return 0.0;
         }
     }

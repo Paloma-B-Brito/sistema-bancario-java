@@ -7,9 +7,9 @@ public class BancoController {
 	private ContaBancaria conta;
 	private MenuBanco menu;
 	
-	public BancoController() {
-		this.conta = new ContaBancaria("Seu Nome", 500.0);
-		this.menu = new MenuBanco();
+	public BancoController(ContaBancaria conta, MenuBanco menu) {
+		this.conta = conta;
+		this.menu = menu;
 	}
 	
 	public void iniciar() {
@@ -24,18 +24,23 @@ public class BancoController {
 				
 			case 2: 
 				double valorDeposito = menu.pedirValor();
-				conta.depositar(valorDeposito);
-				menu.mostrarMensagem("Depósito realizado!");
+					if (conta.depositar(valorDeposito)) {
+						menu.mostrarMensagem("DEPÓSITO REALIZADO!");
+					} else {
+						menu.mostrarMensagem("DEPÓSITO INVÁLIDO! DIGITE UM VALOR POSITIVO.");
+					}
 				break;
 			case 3: 
 				double valorSaque = menu.pedirValor();
 					try {
 						conta.sacar(valorSaque);
 						menu.mostrarMensagem("Saque processado!");
-					} catch (SaldoInsuficienteException e) {
+					} catch (IllegalArgumentException e) {
 						// Se o Model "gritar", o Controller pega o erro aqui
 						menu.mostrarMensagem("ERRO NO SAQUE: " + e.getMessage());
-					}
+					} catch (SaldoInsuficienteException e) {
+						menu.mostrarMensagem("ERRO NO SAQUE: " + e.getMessage());					
+						}
 				break;
 			case 4: 
 				menu.mostrarMensagem("Encerrando sistema...");
